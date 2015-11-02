@@ -26,7 +26,7 @@ drw.on('click', function (e) {
         drwY = (yPos / 2),
         color = '#' + $('.color').val();
 
-    ctx.lineTo(drwX, drwY);
+    ctx.lineTo(drwX, drwY); 
 
     ctx.lineWidth = 3;
     ctx.strokeStyle = color;

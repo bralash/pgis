@@ -17,7 +17,7 @@ $(document).ready(function () {
 			data: excelData,
 			success: function (response) {
 				var ResponseObject = JSON.parse(response);
-				ctx.moveTo(ResponseObject[1]['A'], ResponseObject[1]['B']);
+				
 
 				var length = 0,
 					listOfX = new Array,
@@ -37,7 +37,15 @@ $(document).ready(function () {
 
 				var marginX = listOfX[length - 1] - listOfX[0],
 					factor = 700 / marginX;
+				
 
+					var scaledInitValx = ResponseObject[1]['A'] - listOfX[0],
+						Initx = scaledInitValx * factor + 25,
+						scaledInitValy = ResponseObject[1]['B'] - listofY[0],
+						Inity = scaledInitValy * factor + 25;
+
+				ctx.moveTo(Initx, Inity);
+				
 				for (var i = 0; i < length; i++) {
 					var scaledValx = ResponseObject[i + 1]['A'] - listOfX[0],
 						valToPlotx = scaledValx * factor + 25,

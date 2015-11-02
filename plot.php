@@ -45,9 +45,11 @@
 							<button class="ui circular green icon button" id="end" title="End">
 								<i class="icon circle notched"></i>
 							</button>
+
 							<button class="ui circular yelllow icon button" id="upload" title="Upload">
 								<i class="icon upload"></i>
 							</button>
+
 						</div>
 					</div>
 				</form>
