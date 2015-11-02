@@ -1,0 +1,66 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #f1f1f1;
+	position: relative;
+}
+header {
+	background: #fff;
+	padding: 20px;
+	box-shadow: 0px 1px 1px rgba(0,0,0,.2);
+	position: relative;
+}
+header a.back-icon{
+	position: absolute;
+	display: inline;
+	top: 30px;
+	left: 80px;
+}
+header a.tech-icon {
+	position: absolute;
+	display: inline;
+	top: 30px;
+	right: 80px;
+}
+header h1 {
+	text-align: center;
+	color: #333;
+	margin-top: 0;
+}
+.wrapper {
+	width: 90%;
+	margin: 50px auto;
+	position: relative;4
+}
+.wrapper.closed {
+	width: 80%;
+}
+.wrapper.display .field label {
+	color: #868585;
+}
+.wrapper.display h3.ui.header {
+	margin-top: 10px;
+	color: tomato;
+}
+.wrapper.display h4.ui.header {
+	margin-top: 0;
+	font-family: 'Century Gothic';
+	color: #333;
+}
+.ui.card {
+	border-radius: 0;
+}
+footer {
+	width: 100%;
+	position: absolute;
+	bottom: 5px;
+	text-align: center;
+}
+
+canvas#land-area {
+	border: 1px solid #DEDDDD;
+	background: #fff;
+	display: block;
+	margin: auto;
+	border-radius: 3px;
+}
