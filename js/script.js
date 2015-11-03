@@ -17,7 +17,7 @@ $(document).ready(function () {
 			data: excelData,
 			success: function (response) {
 				var ResponseObject = JSON.parse(response);
-				
+
 
 				var length = 0,
 					listOfX = new Array,
@@ -36,24 +36,29 @@ $(document).ready(function () {
 				listofY.sort();
 
 				var marginX = listOfX[length - 1] - listOfX[0],
-					factor = 700 / marginX;
+					marginY = listofY[length-1] - listofY[0],
+					factorX = 700 / marginX,
+					factorY = 700 / marginY;
+
+				var scaledInitValx = ResponseObject[1]['A'] - listOfX[0],
+					Initx = scaledInitValx * factorX + 25,
+					scaledInitValy = ResponseObject[1]['B'] - listofY[0],
+					Inity = scaledInitValy * factorY + 25;
 				
-
-					var scaledInitValx = ResponseObject[1]['A'] - listOfX[0],
-						Initx = scaledInitValx * factor + 25,
-						scaledInitValy = ResponseObject[1]['B'] - listofY[0],
-						Inity = scaledInitValy * factor + 25;
-
+				console.log('first points are ', Initx, Inity);
 				ctx.moveTo(Initx, Inity);
-				
+
 				for (var i = 0; i < length; i++) {
 					var scaledValx = ResponseObject[i + 1]['A'] - listOfX[0],
-						valToPlotx = scaledValx * factor + 25,
+						valToPlotx = scaledValx * factorX + 25,
 						scaledValy = ResponseObject[i + 1]['B'] - listofY[0],
-						valToPloty = scaledValy * factor + 25;
+						valToPloty = scaledValy * factorY + 25;
 
 					console.log(valToPlotx, valToPloty);
 					ctx.lineTo(valToPlotx, valToPloty);
+
+					ctx.strokeStyle = '#' + $('.color').val();
+					ctx.stroke();
 				}
 
 				clsPth.trigger('click');
