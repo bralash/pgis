@@ -2,6 +2,31 @@
     require('db_connection.php');
 
     class Conflict{
+        public function createConflictTable(){
+            global $db;
+            $sql = "create table conflicts(";
+            
+            foreach ($_POST as $key => $input) {
+	        	if($key == 'action'){
+	        		$key = null;
+	        	}else{
+	        		$sql .= $key.' varchar(255), ';
+        		}
+        	}
+            
+//        	$sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
+//        	foreach ($_POST as $key => $input) {
+//                if($key == 'action'){
+//                    $input = null;
+//                }else{
+//                    $sql .= "'{$input}',";
+//                }
+//        	}
+
+            $sql = substr($sql, 0, strlen($sql)-2).");";
+            echo $sql;
+        }
+        
         public function addNew(array $conf_details){
             global $db;
             $sql = "INSERT INTO `pgis`.`conflicts` (";
