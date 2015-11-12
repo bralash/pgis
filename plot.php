@@ -1,3 +1,11 @@
+<?php
+	require "php/functions.php";
+	session_start();
+	if(!isset($_SESSION['user'])){
+		redirect_to('login.php');
+	}
+?>
+
 <!doctype html>
 <html>
 
@@ -7,6 +15,7 @@
 	<link rel="stylesheet" href="css/semantic.css" />
 	<link rel="stylesheet" href="css/entypo/css/entypo.css" />
 	<link rel="stylesheet" href="css/style.css" />
+	<meta charset="utf-8"/>
 </head>
 
 <body>
@@ -16,10 +25,12 @@
 			<i class="icon home"></i> Back Home
 		</a>
 		<h1>Technical Unit</h1>
+		<p class="loc"><?= $_GET['conflict_name']?></p>
 	</header>
 	<section class="wrapper">
 		<div class="row">
 			<form class="ui form">
+				<input type="hidden" value="<?= $_GET['conflict_id']?>" name="conf_id">
 				<div class="col-md-4">
 					<h2 class="ui header dividing">Grid Controls</h2>
 					<div class="fields">
@@ -43,8 +54,8 @@
 							</button>
 						</div>
 					</div>
-
 				</div>
+
 				<div class="col-md-4">
 					<h2 class="ui header dividing">Plot Points</h2>
 					<div class="fields">
@@ -94,7 +105,14 @@
 			</form>
 		</div>
 
-		<canvas id="land-area"></canvas>
+		<div class="canvas-wrapper">
+			<span class="exv xorigin">XO</span>
+			<span class="exv xfinal">XF</span>
+			<span class="exv yorigin">YO</span>
+			<span class="exv yfinal">YF</span>
+			<canvas id="land-area"></canvas>
+		</div>
+		<button class="save-btn ui button blue right floated" type="submit">Save</button>
 
 	</section>
 

@@ -4,11 +4,18 @@
 
     if(isset($_POST['action']) && $_POST['action'] == 'add_conflict'){
       $conf = new Conflict;
-      if(is_int($conf->addNew($_POST))){
-          echo '1';
+      $conflict_id = $conf->addNew($_POST);
+      if(is_int($conflict_id)){
+          echo $conflict_id;
+          echo "<aside><h1>Conflict ".$_POST['conf_name']."added successfully</h1><a href='../plot.php?conflict_id={$conflict_id}&conflict_name={$_POST['conf_name']}'>Proceed to Technical Unit</a></aside>";
+          echo "<style>a{color: inherit;}
+              aside{width: 400px;background: rgb(240, 240, 240) none repeat scroll 0% 0%;padding: 15px;font-family: century gothic;color: rgb(116, 116, 116);}
+          </style>";
       }   
     }elseif(isset($_POST['action']) && $_POST['action'] == 'addConflictImage'){
-    	Conflict::addConflictImage($_POST['conflict_id'], $_POST['base64']);
+    	if(is_int(Conflict::addConflictImage($_POST['conflict_id'], $_POST['base64']))){
+          echo 'true';
+      }
         
     }elseif(isset($_POST['action']) && $_POST['action'] == 'loadExcelFile'){
         $filename = $_FILES['file']['tmp_name'];
@@ -18,7 +25,7 @@
             include "reader.php";
         }
         else{
-            echo 'still bad '.$filename;
+            echo 'Ooops something is wrong with '.$filename;
         }
     }
 ?>

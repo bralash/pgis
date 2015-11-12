@@ -1,24 +1,17 @@
-<?php
-	require "php/conflict.php";
-	$conflict  = new Conflict;
-
-	$conflict_details = $conflict->getConflictWithId($_GET['conflict_id']);
-	?>
 <!doctype html>
 <html>
 <head>
-	<title><?= $conflict_details['conf_name']?> - PGIS</title>
+	<title>Brenu Akyinim and Ampenyin - PGIS</title>
 	<link rel="stylesheet" href="css/bootstrap.css" />
 	<link rel="stylesheet" href="css/semantic.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
 	<header>
 		<a href="index.php" class="back-icon">
 			<i class="icon home"></i> Back Home
 		</a>
-		<h1><?= $conflict_details['conf_name']?></h1>
+		<h1>Brenu Akyinim and Ampenyin</h1>
 		<a href="index.php" class="tech-icon">
 			Print Page <i class="icon print"></i> 
 		</a>
@@ -29,40 +22,40 @@
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Name of Conflict</label>
-					<h4 class="ui header"><?= $conflict_details['conf_name']?></h4>
+					<h4 class="ui header">Brenu Akyinim And Ampenyin</h4>
 				</div>
 				<div class="eight wide field">
 					<label>Short Description</label>
-					<h4 class="ui header"><?= $conflict_details['conf_description']?></h4>
+					<h4 class="ui header">A conflict between Brenu Akyinim And Ampenyin</h4>
 				</div>
 			</div>
 			<h3 class="ui dividing header">Principal Actors</h3>
 			<div class="fields">
 				<div class="seven wide field">
 					<label>Name (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['name_pln']?></h4>
+					<h4 class="ui header">Brempong Abeka Kwamensah</h4>
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['age_pln']?></h4>
+					<h4 class="ui header">Over 60</h4>
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['edu_pln']?></h4>
+					<h4 class="ui header">MSLC</h4>
 				</div>
 			</div>
 			<div class="fields">
 				<div class="seven wide field">
 					<label>Name (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['name_def']?></h4>
+					<h4 class="ui header">Nana Takyi Akyia VI</h4>
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['age_def']?></h4>
+					<h4 class="ui header">Over 60</h4>
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['edu_def']?></h4>
+					<h4 class="ui header">MSLC</h4>
 				</div>
 			</div>
 			
@@ -70,29 +63,29 @@
 			<div class="fields">
 				<div class="seven wide field">
 					<label>Name (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['name_pln_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['age_pln_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
-					<h4 class="ui header"><?= $conflict_details['edu_pln_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 			</div>
 			<div class="fields">
 				<div class="seven wide field">
 					<label>Name (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['name_def_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['age_def_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
-					<h4 class="ui header"><?= $conflict_details['edu_def_sec']?></h4>
+					<h4 class="ui header">N/A</h4>
 				</div>
 			</div>
 			
@@ -100,11 +93,11 @@
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Plaintiff</label>
-					<h4 class="ui header"><?= $conflict_details['pos_pln']?></h4>
+					<h4 class="ui header">The land is mine (Its my land)</h4>
 				</div>
 				<div class="eight wide field">
 					<label>Defendant</label>
-					<h4 class="ui header"><?= $conflict_details['pos_def']?></h4>
+					<h4 class="ui header">The land is mine (Its my land)</h4>
 				</div>
 			</div>
 			
@@ -112,11 +105,13 @@
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Plaintiff</label>
-					<h4 class="ui header"><?= $conflict_details['interest_pln']?></h4>
+					<h4 class="ui header">To settle the conflict as soon as possible
+						in order to sell the land
+					</h4>
 				</div>
 				<div class="eight wide field">
 					<label>Defendant</label>
-					<h4 class="ui header"><?= $conflict_details['interest_def']?></h4>
+					<h4 class="ui header">To sell the land to investors</h4>
 				</div>
 			</div>
 			
@@ -124,11 +119,11 @@
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Plaintiff</label>
-					<h4 class="ui header"><?= $conflict_details['needs_pln']?></h4>
+					<h4 class="ui header">To make money</h4>
 				</div>
 				<div class="eight wide field">
 					<label>Defendant</label>
-					<h4 class="ui header"><?= $conflict_details['needs_def']?></h4>
+					<h4 class="ui header">To make money</h4>
 				</div>
 			</div>
 			
@@ -136,11 +131,15 @@
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Plaintiff</label>
-					<h4 class="ui header"><?= $conflict_details['df_pln']?></h4>
+					<h4 class="ui header">Desire for wealth and heritage.
+						Fear to existence (if money and land are lost).
+					</h4>
 				</div>
 				<div class="eight wide field">
 					<label>Defendant</label>
-					<h4 class="ui header"><?= $conflict_details['df_def']?></h4>
+					<h4 class="ui header">Desire for authority and wealth.
+						Fear to existence (if money and land are lost).
+					</h4>
 				</div>
 			</div>
 			
@@ -389,6 +388,7 @@
 			</button>
 		</form>
 	</section>
+
 
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>

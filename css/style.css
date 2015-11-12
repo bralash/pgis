@@ -4,26 +4,47 @@ body {
 	background: #f1f1f1;
 	position: relative;
 }
+
 body.blur {
 	background: url(../img/1.jpg);
 }
+
 body.blur header {
 	background: transparent;
 	box-shadow: none;
 }
+
 header {
 	background: #22A7F0;
 	padding: 20px;
-	box-shadow: 0px 1px 1px rgba(0,0,0,.2);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, .2);
 	position: relative;
 }
-header a.back-icon{
+.sign-out{
+	position: absolute;
+	right: 14px;
+	top: 10px;
+}
+header a.back-icon {
 	position: absolute;
 	display: inline;
 	top: 30px;
 	left: 80px;
 	color: #E9E4E3;
 }
+
+header .loc {
+	padding: 0px;
+	margin: 0px;
+	margin-top: -20px;
+	text-align: center;
+	color: #fff;
+}
+
+.showing-owner-pln {
+	border: 2px solid rgb(34, 167, 240)!important;
+}
+
 header a.tech-icon {
 	position: absolute;
 	display: inline;
@@ -31,35 +52,44 @@ header a.tech-icon {
 	right: 80px;
 	color: #E9E4E3;
 }
+
 header h1 {
 	text-align: center;
 	color: #fff;
 	margin-top: 0;
 }
+
 .wrapper {
 	width: 90%;
 	margin: 50px auto;
-	position: relative;4
+	position: relative;
+	4
 }
+
 .wrapper.closed {
 	width: 80%;
 }
+
 .wrapper.display .field label {
 	color: #868585;
 }
+
 .wrapper.display h3.ui.header {
 	margin-top: 10px;
 	color: tomato;
 }
+
 .wrapper.display h4.ui.header {
 	margin-top: 0;
 	font-family: 'Century Gothic';
 	color: #333;
 }
+
 .ui.card {
 	border-radius: 0;
-	box-shadow: 0px 1px 1px rgba(0,0,0,.2);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, .2);
 }
+
 footer {
 	width: 100%;
 	position: absolute;
@@ -74,16 +104,49 @@ canvas#land-area {
 	margin: 20px auto;
 	border-radius: 3px;
 }
+
 div.row {
 	margin-top: 10px;
 }
+
 input[type="file"].hidden-browse {
 	display: none;
 }
+
 input[type="number"] {
 	-moz-appearance: textfield;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-apperance: none;
+}
+
+.canvas-wrapper {
+	position: relative;
+	padding-top: 50px;
+}
+
+.exv {
+	position: absolute;
+}
+
+.xorigin {
+	left: 0;
+	top: 0;
+}
+
+.xfinal {
+	right: 0;
+	top: 0;
+}
+
+.yorgin {
+	left: -25px;
+	top: 65px;
+}
+
+.yfinal {
+	left: 0;
+	bottom: 0;
 }

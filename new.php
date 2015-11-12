@@ -1,3 +1,10 @@
+<?php
+	require "php/functions.php";
+	session_start();
+	if(!isset($_SESSION['user'])){
+		redirect_to('login.php');
+	}
+?>
 <!doctype html>
 <html>
 
@@ -21,7 +28,8 @@
 	</header>
 
 	<section class="container wrapper">
-		<form class="ui form main" action="php/create.php" method="post">
+		<form class="ui form main" action="php/conflict_controller.php" method="post">
+		<input type="hidden" name="action" value="add_conflict">
 			<input type="hidden" name="action" value="add_conflict">
 			<h4 class="ui dividing header">Land Conflict Register</h4>
 			<div class="fields">
@@ -42,7 +50,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<input name="age_pln" type="text" />
+					<input name="age_pln" type="number" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
@@ -56,7 +64,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<input name="age_def" type="text" />
+					<input name="age_def" type="number" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
@@ -72,7 +80,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<input name="age_pln_sec" type="text" />
+					<input name="age_pln_sec" type="number" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
@@ -86,7 +94,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<input name="age_def_sec" type="text" />
+					<input name="age_def_sec" type="number" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
@@ -354,54 +362,54 @@
 			</div>
 
 			<h4 class="ui dividing header">Detail of Ownership</h4>
-			<div class="fields">
+			<div class="fields allodial-group">
 				<div class="eight wide field">
 					<label>Plaintiff</label>
-					<select name="owner_pln" class="ui dropdown">
+					<select name="owner_pln" class="ui dropdown name-owner-pln">
 						<option value="0">Allodial</option>
 						<option value="1">Acquisition</option>
 					</select>
 
-					<select data-input="allodial" class="ui dropdown" style="display:none">
-						<option value="settlement">Settlement</option>
-						<option value="settlement">Inheritance</option>
-						<option value="settlement">Conquers</option>
+					<select data-input="allodial" class="ui dropdown name-owner-pln" style="display:none">
+						<option value="Settlement">Settlement</option>
+						<option value="Inheritance">Inheritance</option>
+						<option value="Conquers">Conquers</option>
 					</select>
-					<select data-input="acquisition" class="ui dropdown" style="display:none">
-						<option value="settlement">Freehold</option>
-						<option value="settlement">Transfer</option>
-						<option value="settlement">Gift</option>
-						<option value="settlement">Assignment</option>
-						<option value="settlement">Lease</option>
+					<select data-input="acquisition" class="ui dropdown name-owner-pln" style="display:none">
+						<option value="Freehold">Freehold</option>
+						<option value="Transfer">Transfer</option>
+						<option value="Gift">Gift</option>
+						<option value="Assignment">Assignment</option>
+						<option value="Lease">Lease</option>
 					</select>
-					<select data-input="lease" class="ui dropdown" style="display:none">
-						<option value="settlement">Head Lease</option>
-						<option value="settlement">Sub Lease</option>
-						<option value="settlement">Under Lease</option>
+					<select data-input="lease" class="ui dropdown name-owner-pln" style="display:none">
+						<option value="Head Lease">Head Lease</option>
+						<option value="Sub Lease">Sub Lease</option>
+						<option value="Under Lease">Under Lease</option>
 					</select>
 				</div>
 				<div class="eight wide field">
 					<label>Defendant</label>
-					<select name="owner_def" class="ui dropdown">
+					<select name="owner_def" class="ui dropdown name-owner-pln">
 						<option value="0">Allodial</option>
 						<option value="1">Acquisition</option>
 					</select>
-					<select data-input="allodial" class="ui dropdown" style="display:none" id="">
-						<option value="settlement">Settlement</option>
-						<option value="settlement">Inheritance</option>
-						<option value="settlement">Conquers</option>
+					<select data-input="allodial" class="ui dropdown name-owner-pln" style="display:none" id="">
+						<option value="Settlement">Settlement</option>
+						<option value="Inheritance">Inheritance</option>
+						<option value="Conquers">Conquers</option>
 					</select>
-					<select data-input="acquisition" class="ui dropdown" style="display:none" id="">
-						<option value="settlement">Freehold</option>
-						<option value="settlement">Transfer</option>
-						<option value="settlement">Gift</option>
-						<option value="settlement">Assignment</option>
-						<option value="settlement">Lease</option>
+					<select data-input="acquisition" class="ui dropdown name-owner-pln" style="display:none" id="">
+						<option value="Freehold">Freehold</option>
+						<option value="Transfer">Transfer</option>
+						<option value="Gift">Gift</option>
+						<option value="Assignment">Assignment</option>
+						<option value="Lease">Lease</option>
 					</select>
-					<select data-input="lease" class="ui dropdown" style="display:none" id="">
-						<option value="settlement">Head Lease</option>
-						<option value="settlement">Sub Lease</option>
-						<option value="settlement">Under Lease</option>
+					<select data-input="lease" class="ui dropdown name-owner-pln" style="display:none" id="">
+						<option value="Head Lease">Head Lease</option>
+						<option value="Sub Lease">Sub Lease</option>
+						<option value="Under Lease">Under Lease</option>
 					</select>
 				</div>
 			</div>
@@ -456,7 +464,7 @@
 			</div>
 
 			<button type="submit" class="ui button blue right floated">Save</button>
-			
+
 		</form>
 	</section>
 

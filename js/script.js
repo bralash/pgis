@@ -22,6 +22,7 @@ $("input[type=number]").keydown(function (e) {
     }
 });
 
+
 function drawGrid(maxX, minX, maxY, minY) {
     var marginX = maxX - minX,
         marginY = maxY - minY;
@@ -38,7 +39,7 @@ function drawGrid(maxX, minX, maxY, minY) {
         scaleY = 1250 / marginY;
 
     ctx.beginPath();
-//    console.log(marginX, scaleX);
+    //    console.log(marginX, scaleX);
 
     var plotMarginX,
         plotMarginY;
@@ -56,19 +57,31 @@ function drawGrid(maxX, minX, maxY, minY) {
     }
 
     ctx.lineWidth = 1;
-    ctx.strokeStyle = '#ccc';
+    ctx.strokeStyle = '#aaaaaa';
     ctx.stroke();
 }
 
 var shG = $("#shG");
+
 shG.on('click', function (e) {
     e.preventDefault();
-    var strtX = $("#strtX").val(),
-        endX = $("#endX").val(),
-        strtY = $("#strtY").val(),
-        endY = $("#endY").val();
+    var strtX = $("#strtX").val().substring(0, 3),
+        endX = $("#endX").val().substring(0, 3),
+        strtY = $("#strtY").val().substring(0, 3),
+        endY = $("#endY").val().substring(0, 3);
 
     drawGrid(endX, strtX, endY, strtY);
+    gridDrawn = true;
+
+    XOrigin = strtX * 1000;
+    XFinal = endX * 1000;
+    YOrigin = strtY * 1000;
+    YFinal = endY * 1000;
+
+    $('.xorigin').text(XOrigin);
+    $('.xfinal').text(XFinal);
+    $('.yorigin').text(YOrigin);
+    $('.yfinal').text(YFinal);
 });
 
 // drawGrid(125, 120, 140, 130);
