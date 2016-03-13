@@ -14,17 +14,30 @@ body.blur header {
 	box-shadow: none;
 }
 
+header .tools {
+	position: absolute;
+	right: 26px;
+	bottom: -28px;
+}
+
+.actions a i {
+	font-size: 15px;
+	margin-right: 8px;
+}
+
 header {
 	background: #22A7F0;
-	padding: 20px;
+	padding: 10px;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, .2);
 	position: relative;
 }
-.sign-out{
+
+.sign-out {
 	position: absolute;
 	right: 14px;
 	top: 10px;
 }
+
 header a.back-icon {
 	position: absolute;
 	display: inline;

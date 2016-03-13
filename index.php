@@ -10,61 +10,45 @@
 <html>
 <head>
 	<title>PGIS</title>
-	<link rel="stylesheet" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="css/semantic.css" />
+	<link rel="stylesheet" href="materialize/css/materialize.css" />
+	<link rel="stylesheet" href="fonts/font-awesome-4.4.0/css/font-awesome.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<meta charset="utf-8">
 </head>
 <body>
-	<header>
-		<h1>Participatory Geographic Information System</h1>
-		<a class="sign-out" href="php/auth.php?action=signout">Sign Out</a>
+	<header class="white">
+		<p>Participatory Geographic Information System</p>
+		<div class="tools">
+			<a href="php/auth.php?action=signout" class="btn-floating btn-large waves-effect waves-light red"><i class="fa fa-mail-forward"></i></a>
+
+		</div>
 	</header>
 	
-	<section class="wrapper container closed">
+	<section class="container">
 		<div class="row">
-			<div class="col-md-4">
-
-				<div class="ui card">
-					<div class="content">
-						<img class="image right floated mini ui" src="img/add.png" />
-						<div class="header">
-							<a href="new.php" class="link">Add Conflict</a>
-						</div>
-						<div class="description">
-							Add details of a new conflict and to generate a plot 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="ui card">
-					<div class="content">
-						<img class="image right floated mini ui" src="img/compass.png" />
-						<div class="header">
-							<a href="ba.php">Brenu Akyinim and Ampenyin</a>
-						</div>
-						<div class="description">
-							Conflict between Brenu Akyinim and Ampenyin
-						</div>
-					</div>
-				</div>
+		<div class="actions">
+			<a href="new.php" class="waves-effect waves-light btn"><i class="fa fa-plus"></i>Add Conflict</a>
+			<a href="plot.php" class="waves-effect waves-light btn"><i class="fa fa-plus"></i>Add Map</a>
+		</div>
 				<?php 
 					require "php/conflict.php";
 					$conflicts = Conflict::getAll();
 				?>
 				<?php foreach ($conflicts as $key => $conflict):?>
-				<div class="ui card">
-					<div class="content">
-						<img class="image right floated mini ui" src="img/compass.png" />
-						<div class="header">
-							<a href="display.php?conflict_id=<?=$conflict['id']?>"> <?=$conflict["conf_name"]?> </a>
+					<div class="row">
+						<div class="col s12 m4">
+							<div class="card white darken-1">
+								<div class="card-content gray-text">
+									<span class="card-title"><?=$conflict["conf_name"]?></span>
+									<p><?=$conflict['conf_description']?></p>
+								</div>
+								<div class="card-action">
+									<a href="display.php?conflict_id=<?=$conflict['id']?>">View Conflict</a>
+								</div>
+							</div>
 						</div>
-						<div class="description"><?=$conflict['conf_description']?></div>
 					</div>
-				</div>
 				<?php endforeach; ?>
-			</div>
 		</div>
 	</section>
 	<footer>Copyright &copy; Nana Gyamera 2015</footer>

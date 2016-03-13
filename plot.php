@@ -11,9 +11,8 @@
 
 <head>
 	<title>Technical Unit - PGIS</title>
-	<link rel="stylesheet" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="css/semantic.css" />
-	<link rel="stylesheet" href="css/entypo/css/entypo.css" />
+	<link rel="stylesheet" href="materialize/css/materialize.css" />
+	<link rel="stylesheet" href="fonts/font-awesome-4.4.0/css/font-awesome.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<meta charset="utf-8"/>
 </head>
@@ -33,19 +32,19 @@
 				<input type="hidden" value="<?= $_GET['conflict_id']?>" name="conf_id">
 				<div class="col-md-4">
 					<h2 class="ui header dividing">Grid Controls</h2>
-					<div class="fields">
-						<div class="seven wide field">
+					<div class="col m3 fields">
+						<div class="input-field col s12">
 							<input type="number" id="strtX" placeholder="Starting X Coordinate">
 						</div>
-						<div class="seven wide field">
+						<div class="input-field col s12">
 							<input type="number" id="endX" placeholder="Ending X Coordinate">
 						</div>
 					</div>
-					<div class="fields">
-						<div class="seven wide field">
+					<div class="col m3 fields">
+						<div class="input-field col s12">
 							<input type="number" id="strtY" placeholder="Starting Y Coordinate">
 						</div>
-						<div class="seven wide field">
+						<div class="input-field col s12">
 							<input type="number" id="endY" placeholder="Ending Y Coordinate">
 						</div>
 						<div class="two wide field">
@@ -57,16 +56,6 @@
 				</div>
 
 				<div class="col-md-4">
-					<h2 class="ui header dividing">Plot Points</h2>
-					<div class="fields">
-						<div class="field">
-							<input type="number" class="xCood" placeholder="X Coordinate" />
-						</div>
-						<div class="field">
-							<input type="number" class="yCood" placeholder="Y Coordinate" />
-						</div>
-					</div>
-
 					<div class="fields">
 						<div class="field">
 							<input class="color" name="color" value="22A7F0" />

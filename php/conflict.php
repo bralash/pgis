@@ -90,6 +90,11 @@
             $sql = "INSERT INTO `graph_images` (`id`, `conflict_id`, `image`) VALUES (NULL, '{$id}', '{$path}');";
             $db->query($sql);
             return $db->lastInsertedId(); 
+        }
+
+        public static function getConflictImage($id){
+            global $db;
+            return $db->fetchArray($db->query("SELECT `image` FROM `graph_images` WHERE conflict_id = '{$id}';"))['image'];
         } 
     }
 ?>

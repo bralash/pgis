@@ -1,6 +1,6 @@
 <?php
 	require "php/conflict.php";
-	$conflict  = new Conflict;
+	$conflict  = new Conflict();
 
 	$conflict_details = $conflict->getConflictWithId($_GET['conflict_id']);
 	?>
@@ -379,8 +379,8 @@
 			<h2 class="ui dividing header">Technical Unit(Conflict Visualization)</h2>
 			<div class="field">
 				<div class="ui fuild image">
-					
-					<img src="img/test.png" />
+					<?php $img = Conflict::getConflictImage($_GET['conflict_id']); ?>
+					<img src="img/<?=$img?>" />
 				</div>
 			</div>
 
