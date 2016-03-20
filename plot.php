@@ -25,7 +25,6 @@
 			<i class="icon home"></i> Back Home
 		</a>
 		<h1>Technical Unit</h1>
-		<p class="loc"><?= $_GET['conflict_name']?></p>
 	</header>
 	<section class="wrapper">
 		<div class="row">
@@ -57,40 +56,23 @@
 				</div>
 
 				<div class="col-md-4">
-					<h2 class="ui header dividing">Plot Points</h2>
+					<h2 class="ui header dividing">Conflict Details</h2>
 					<div class="fields">
-						<div class="field">
-							<input type="number" class="xCood" placeholder="X Coordinate" />
-						</div>
-						<div class="field">
-							<input type="number" class="yCood" placeholder="Y Coordinate" />
-						</div>
-					</div>
-
-					<div class="fields">
-						<div class="field">
-							<input class="color" name="color" value="22A7F0" />
-						</div>
-						<div class="field">
-							<button class="ui circular blue icon button" id="strt" title="Start">
-								<i class="edit icon"></i>
-							</button>
-							<button class="ui circular orange icon button" id="drw" title="Draw">
-								<i class="icon paint brush"></i>
-							</button>
-							<button class="ui circular teal icon button" id="clsPth" title="Close Path">
-								<i class="icon retweet"></i>
-							</button>
-							<button class="ui circular green icon button" id="end" title="End">
-								<i class="icon circle notched"></i>
-							</button>
-						</div>
+						<?php 
+							require "php/conflict.php";
+							$conflicts = Conflict::getAll();
+						?>
+						<select class="ui dropdown" id="conflict-id">
+							<?php foreach ($conflicts as $key => $conflict):?>
+								<option value="<?=$conflict["id"]?>"><?=$conflict["conf_name"]?></option>
+							<?php endforeach; ?>		
+						</select>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<h2 class="ui header dividing">Upload Coordinates</h2>
 					<div class="field">
-						<input class="up color" name="color" value="22A7F0" />
+						<input class="up jscolor" name="color" value="22A7F0" />
 					</div>
 					<div class="field">
 						<div class="ui action input">
@@ -104,7 +86,19 @@
 				</div>
 			</form>
 		</div>
-
+	
+		<div class="key">
+			<div class="key-pair">
+				<span class="color-bar"></span><span>- Plaintiff</span>
+			</div>
+			<div class="key-pair">
+				<span class="color-bar"></span><span>- Defendant</span>
+			</div>
+		</div>
+		<div class="area">
+			<span class="first">Area of Plot1: <b></b></span>
+			<span class="second">Area of Plot2: <b></b></span>
+		</div>
 		<div class="canvas-wrapper">
 			<span class="exv xorigin">XO</span>
 			<span class="exv xfinal">XF</span>

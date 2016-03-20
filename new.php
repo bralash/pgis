@@ -22,24 +22,21 @@
 			<i class="icon arrow left"></i> Back
 		</a>
 		<h1>Social/Non-Technical Unit</h1>
-		<a href="plot.php" class="tech-icon">
-			Technical Unit <i class="icon arrow right"></i>
-		</a>
 	</header>
 
 	<section class="container wrapper">
-		<form class="ui form main" action="php/conflict_controller.php" method="post">
-		<input type="hidden" name="action" value="add_conflict">
-			<input type="hidden" name="action" value="add_conflict">
+		<form class="ui form main" action="php/conflict_controller.php" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="action" value="add_conflict"/>
+			<input type="hidden" name="action" value="add_conflict"/>
 			<h4 class="ui dividing header">Land Conflict Register</h4>
 			<div class="fields">
 				<div class="eight wide field">
 					<label>Name of Conflict</label>
-					<input name="conf_name" type="text" />
+					<input name="conf_name" type="text" required="true" />
 				</div>
 				<div class="eight wide field">
 					<label>Short Description</label>
-					<input name="conf_description" type="text" />
+					<input name="conf_description" type="text" required="true" />
 				</div>
 			</div>
 			<h4 class="ui dividing header">Principal Actors</h4>
@@ -462,9 +459,18 @@
 					</select>
 				</div>
 			</div>
-
+			<div class="fields">
+				<div class="field seven">
+					<div class="ui action input">
+						<input placeholder="Choose file" id="ip" type="text" disabled="disabled"/>
+						<button class="ui teal button brw icon" title="Browse">
+							<i class="icon archive"></i>
+						</button>
+					</div>
+					<input name="plot-image" type="file" id="upload-input" class="hidden-browse"/>
+				</div>
+			</div>
 			<button type="submit" class="ui button blue right floated">Save</button>
-
 		</form>
 	</section>
 
