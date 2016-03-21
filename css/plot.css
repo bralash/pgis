@@ -1,0 +1,56 @@
+header {
+    height: 100px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+p {
+    margin: 0;
+}
+
+canvas#land-area {
+    border: 1px solid #DEDDDD;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+    border-radius: 3px;
+    width: 1250px;
+}
+
+.extremes input {
+    display: inline-block;
+}
+
+.canvas-wrapper {
+    position: relative;
+    padding-top: 50px;
+}
+
+.exv {
+    position: absolute;
+}
+
+.xorigin {
+    left: 0;
+    top: 0;
+}
+
+.xfinal {
+    right: 0;
+    top: 0;
+}
+
+.yorgin {
+    left: -25px;
+    top: 65px;
+}
+
+.yfinal {
+    left: 0;
+    bottom: 0;
+}
+
+#shG i {
+    font-size: 14px;
+}

@@ -34,8 +34,8 @@
 					require "php/conflict.php";
 					$conflicts = Conflict::getAll();
 				?>
-				<?php foreach ($conflicts as $key => $conflict):?>
 					<div class="row">
+					<?php foreach ($conflicts as $key => $conflict):?>
 						<div class="col s12 m4">
 							<div class="card white darken-1">
 								<div class="card-content gray-text">
@@ -47,8 +47,8 @@
 								</div>
 							</div>
 						</div>
+						<?php endforeach; ?>
 					</div>
-				<?php endforeach; ?>
 		</div>
 	</section>
 	<footer>Copyright &copy; Nana Gyamera 2015</footer>

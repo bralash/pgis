@@ -15,51 +15,57 @@
             $sql = "create table conflicts(";
             
             foreach ($_POST as $key => $input) {
-	        	if($key == 'action'){
-	        		$key = null;
-	        	}else{
-	        		$sql .= $key.' varchar(255), ';
-        		}
-        	}
+                if($key == 'action') $key = null;
+                else $sql .= $key.' varchar(255), ';
+            }
             
-//        	$sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
-//        	foreach ($_POST as $key => $input) {
+//          $sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
+//          foreach ($_POST as $key => $input) {
 //                if($key == 'action'){
 //                    $input = null;
 //                }else{
 //                    $sql .= "'{$input}',";
 //                }
-//        	}
+//          }
 
             $sql = substr($sql, 0, strlen($sql)-2).");";
             echo $sql;
         }
         
-        public function addNew(array $conf_details){
+        public function addNew(array $conf_details, array $files_array){
             global $db;
             $sql = "INSERT INTO `pgis`.`conflicts` (";
 
             foreach ($_POST as $key => $input) {
-	        	if($key == 'action'){
-	        		$key = null;
-	        	}else{
-	        		$sql .= '`'.$key.'`, ';
-        		}
-        	};
-        	$sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
-        	
+                if($key == 'action' || $key == 'plot-image') $key = null;
+                else $sql .= '`'.$key.'`, ';
+            }
+            $sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
+            
             foreach ($_POST as $key => $input) {
-                if($key == 'action'){
-                    $input = null;
-                }else{
-                    $sql .= "'{$input}',";
-                }
-        	}
+                if($key == 'action' || $key == 'plot-image') $input = null;
+                else $sql .= "'{$input}',";
+            }
 
             $sql = substr($sql, 0, strlen($sql)-2)."');";
-        	// return $sql;
+            // return $sql;
             // $db->query($db->sqlFormat($sql));
             $db->query($sql);
+
+            if(isset($files_array['plot-image'])){
+                global $db;
+                $filename = $files_array['plot-image']['tmp_name'];
+                $path = 'img/graph'.$db->lastInsertedId().'.jpg';
+
+                if(move_uploaded_file($filename, $path)){
+                    $sql = "INSERT INTO `graph_images` (`id`, `conflict_id`, `image`) VALUES (NULL, '{$db->lastInsertedId()}', '{$path}');";
+                    $db->query($sql);
+                    return $db->lastInsertedId(); 
+                }
+                else echo 'Ooops something is wrong, file couldnt be uploaded';
+            }
+            // else var_dump($conf_image);
+
             return $db->lastInsertedId(); 
         }
 
@@ -91,10 +97,5 @@
             $db->query($sql);
             return $db->lastInsertedId(); 
         }
-
-        public static function getConflictImage($id){
-            global $db;
-            return $db->fetchArray($db->query("SELECT `image` FROM `graph_images` WHERE conflict_id = '{$id}';"))['image'];
-        } 
     }
 ?>

@@ -3,6 +3,7 @@ ctx = canvas.getContext('2d');
 canvas.width = 1250;
 canvas.height = 1250;
 var excelData = new FormData;
+var uploadCount = 0;
 var gridDrawn = false;
 var strt = $("#strt"),
           drw = $("#drw"),
@@ -31,16 +32,16 @@ drw.on('click', function (e) {
           console.log(x, y);
 
           if (movedTo) {
-              ctx.lineTo(x, y);
-              console.log('lineTo '+x, y);
+                    ctx.lineTo(x, y);
+                    console.log('lineTo ' + x, y);
 
           } else {
-             ctx.moveTo(x, y);
-             console.log('movedTo '+x, y);
+                    ctx.moveTo(x, y);
+                    console.log('movedTo ' + x, y);
 
-             movedTo = true;
+                    movedTo = true;
           }
-          ctx.strokeStyle = '#'+$('.color').val();
+          ctx.strokeStyle = '#' + $('.color').val();
           ctx.stroke();
 
           xCood.val('');
@@ -65,111 +66,135 @@ $('.brw').on('click', function (e) {
           $('.hidden-browse').trigger('click');
 });
 
-$('.hidden-browse').on('click', function () {
-          $(this).change(function () {
-                    var filename = $(this).val();
-                    $('#ip').val(filename);
-                    excelData.set('action', 'loadExcelFile');
-                    excelData.set('file', document.getElementById('upload-input').files[0]);
+function polygonArea(X, Y, numPoints) {
+          area = 0; // Accumulates area in the loop
+          j = numPoints - 1; // The last vertex is the 'previous' one to the first
 
-                    console.log(excelData.get('action'));
-                    $.ajax({
-                              url: 'php/conflict_controller.php',
-                              data: excelData,
-                              success: function (response) {
-                                        var ResponseObject = JSON.parse(response);
+          for (i = 0; i < numPoints; i++) {
+                    area = area + (X[j] + X[i]) * (Y[j] - Y[i]);
+                    j = i; //j is previous vertex to i
+          }
+          return area / 2;
+}
 
-                                        var length = 0,
-                                                  olistOfX = new Array,
-                                                  olistofY = new Array;
 
-                                        for (prop in ResponseObject) {
-                                                  length++;
-                                        }
+$('.hidden-browse').change(function () {
+          var filename = $(this).val();
+          $('#ip').val(filename);
+          excelData.set('action', 'loadExcelFile');
+          excelData.set('file', document.getElementById('upload-input').files[0]);
+
+          console.log(excelData.get('action'));
+          $.ajax({
+                    url: 'php/conflict_controller.php',
+                    data: excelData,
+                    success: function (response) {
+                              var ResponseObject = JSON.parse(response);
+                              uploadCount++;
+                              console.log(uploadCount);
+
+                              var length = 0,
+                                        olistOfX = new Array,
+                                        olistofY = new Array;
+
+                              for (prop in ResponseObject) {
+                                        length++;
+                              }
+
+                              for (var i = 0; i < length; i++) {
+                                        olistOfX.push(new String(ResponseObject[i + 1]['A']).substring(0, 3));
+                                        olistofY.push(new String(ResponseObject[i + 1]['B']).substring(0, 3));
+                              }
+                              var listOfX = new Array;
+                              var listOfY = new Array;
+
+                              for (var i = 0; i < length; i++) {
+                                        listOfX.push(new Number(olistOfX[i]));
+                                        listOfY.push(new Number(olistofY[i]));
+                              }
+                              listOfX.sort();
+                              listOfY.sort();
+
+                              if (!gridDrawn) {
+                                        XOrigin = listOfX[0] * 1000;
+                                        XFinal = (listOfX[length - 1] + 1) * 1000;
+                                        YOrigin = listOfY[0] * 1000;
+                                        YFinal = (listOfY[length - 1] + 1) * 1000;
+                                        isSetXY = true;
+                              }
+
+                              $('.xorigin').text(XOrigin);
+                              $('.xfinal').text(XFinal);
+                              $('.yorigin').text(YOrigin);
+                              $('.yfinal').text(YFinal);
+
+                              //                                  }
+                              //                console.log(XOrigin, XFinal, YOrigin, YFinal);
+
+                              var marginX = listOfX[length - 1] - listOfX[0],
+                                        marginY = listOfY[length - 1] - listOfY[0];
+
+                              if (marginX == 0) marginX = 1;
+                              if (marginY == 0) marginY = 1;
+
+                              var scaleX = 1250 / marginX,
+                                        scaleY = 1250 / marginY;
+
+                              if (gridDrawn) drawPoints();
+                              if (!gridDrawn) {
+                                        drawGrid(listOfX[length - 1], listOfX[0], listOfY[length - 1], listOfY[0]);
+                                        gridDrawn = true;
+                              }
+
+                              function drawPoints() {
+                                        listOfX = [];
+                                        listOfY = [];
 
                                         for (var i = 0; i < length; i++) {
-                                                  olistOfX.push(new String(ResponseObject[i + 1]['A']).substring(0, 3));
-                                                  olistofY.push(new String(ResponseObject[i + 1]['B']).substring(0, 3));
+                                                  listOfX.push(ResponseObject[i + 1]['A']);
+                                                  listOfY.push(ResponseObject[i + 1]['B']);
                                         }
-                                        var listOfX = new Array;
-                                        var listOfY = new Array;
+                                        var area = polygonArea(listOfX, listOfY, length);
+
+                                        $('.area').fadeIn();
+                                        $('.key').fadeIn();
+                                        if (uploadCount == 2) {
+                                                  $('.area .first b').text(area);
+                                                  $('.key-pair').first().find('.color-bar').css('background', '#' + $('.color').val());
+                                        }
+                                        if (uploadCount == 3) {
+                                                  $('.area .second b').text(area);
+                                                  $('.key-pair:nth-of-type(2)').find('.color-bar').first().css('background', '#' + $('.color').val());
+                                        }
+
+                                        ctx.beginPath();
+
+                                        x1 = (1250 / (XFinal - XOrigin)) * (listOfX[0] - XOrigin);
+                                        y1 = (1250 / (YFinal - YOrigin)) * (listOfY[0] - YOrigin);
+
+                                        ctx.moveTo(x1, y1);
 
                                         for (var i = 0; i < length; i++) {
-                                                  listOfX.push(new Number(olistOfX[i]));
-                                                  listOfY.push(new Number(olistofY[i]));
+                                                  x = (1250 / (XFinal - XOrigin)) * (listOfX[i] - XOrigin);
+                                                  y = (1250 / (YFinal - YOrigin)) * (listOfY[i] - YOrigin);
+                                                  ctx.lineTo(x, y);
+
+                                                  ctx.strokeStyle = '#' + $('.up.color').val();
+                                                  ctx.stroke();
+
+                                                  var fillcolor = document.getElementsByClassName('jscolor')[0].toRGBString();
+
+                                                  ctx.fillStyle = fillcolor;
                                         }
-                                        listOfX.sort();
-                                        listOfY.sort();
+                                        clsPth.trigger('click');
+                              }
+                    },
+                    error: function (error) {
 
-                                        if (!gridDrawn) {
-                                                  XOrigin = listOfX[0] * 1000;
-                                                  XFinal = (listOfX[length - 1] + 1) * 1000;
-                                                  YOrigin = listOfY[0] * 1000;
-                                                  YFinal = (listOfY[length - 1] + 1) * 1000;
-                                                  isSetXY = true;
-                                        }
-
-                                        $('.xorigin').text(XOrigin);
-                                        $('.xfinal').text(XFinal);
-                                        $('.yorigin').text(YOrigin);
-                                        $('.yfinal').text(YFinal);
-
-                                        //                                  }
-                                        //                console.log(XOrigin, XFinal, YOrigin, YFinal);
-
-                                        var marginX = listOfX[length - 1] - listOfX[0],
-                                                  marginY = listOfY[length - 1] - listOfY[0];
-
-                                        if (marginX == 0) marginX = 1;
-                                        if (marginY == 0) marginY = 1;
-
-                                        var scaleX = 1250 / marginX,
-                                                  scaleY = 1250 / marginY;
-
-                                        if (gridDrawn) drawPoints();
-                                        if (!gridDrawn) {
-                                                  drawGrid(listOfX[length - 1], listOfX[0], listOfY[length - 1], listOfY[0]);
-                                                  gridDrawn = true;
-                                        }
-
-                                        console.log(XOrigin, XFinal, XFinal - XOrigin);
-
-                                        function drawPoints() {
-                                                  listOfX = [];
-                                                  listOfY = [];
-
-                                                  for (var i = 0; i < length; i++) {
-                                                            listOfX.push(ResponseObject[i + 1]['A']);
-                                                            listOfY.push(ResponseObject[i + 1]['B']);
-                                                  }
-                                                  //                listOfX.sort();
-                                                  //                listOfY.sort();
-                                                  ctx.beginPath();
-
-                                                  x1 = (1250 / (XFinal - XOrigin)) * (listOfX[0] - XOrigin);
-                                                  y1 = (1250 / (YFinal - YOrigin)) * (listOfY[0] - YOrigin);
-
-                                                  ctx.moveTo(x1, y1);
-
-                                                  for (var i = 0; i < length; i++) {
-                                                            x = (1250 / (XFinal - XOrigin)) * (listOfX[i] - XOrigin);
-                                                            y = (1250 / (YFinal - YOrigin)) * (listOfY[i] - YOrigin);
-                                                            ctx.lineTo(x, y);
-
-                                                            console.log(x, y);
-                                                            ctx.strokeStyle = '#' + $('.up.color').val();
-                                                            ctx.stroke();
-                                                  }
-                                                  clsPth.trigger('click');
-                                        }
-                              },
-                              error: function (error) {
-
-                              },
-                              type: 'POST',
-                              processData: false,
-                              contentType: false
-                    });
+                    },
+                    type: 'POST',
+                    processData: false,
+                    contentType: false
           });
 });
 
@@ -177,7 +202,7 @@ $('.save-btn').click(function () {
           $.ajax({
                     url: 'php/conflict_controller.php',
                     data: {
-                              conflict_id: $('[name=conf_id]').val(),
+                              conflict_id: $('#conflict-id').val(),
                               base64: canvas.toDataURL('image/jpeg'),
                               action: 'addConflictImage'
                     },
