@@ -35,6 +35,20 @@
 					$conflicts = Conflict::getAll();
 				?>
 					<div class="row">
+						<div class="col s12 m4">
+							<div class="card white darken-1">
+								<div class="card-content gray-text">
+									<span class="card-title">Brenu</span>
+									<p>A conflict between Brenu</p>
+								</div>
+								<div class="card-action">
+									<a href="ba.php">View Conflict</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
 					<?php foreach ($conflicts as $key => $conflict):?>
 						<div class="col s12 m4">
 							<div class="card white darken-1">
@@ -51,7 +65,7 @@
 					</div>
 		</div>
 	</section>
-	<footer>Copyright &copy; Nana Gyamera 2015</footer>
+	<footer>Copyright &copy; Nana Gyamera 2016</footer>
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>

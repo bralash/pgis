@@ -71,7 +71,7 @@ function polygonArea(X, Y, numPoints) {
           j = numPoints - 1; // The last vertex is the 'previous' one to the first
 
           for (i = 0; i < numPoints; i++) {
-                    area = area + (X[j] + X[i]) * (Y[j] - Y[i]);
+                    area = (area + (X[j] + X[i]) * (Y[j] - Y[i])) * -1;
                     j = i; //j is previous vertex to i
           }
           return area / 2;
@@ -160,14 +160,16 @@ $('.hidden-browse').change(function () {
                                         $('.key').fadeIn();
                                         if (uploadCount == 2) {
                                                   $('.area .first b').text(area);
-                                                  $('.key-pair').first().find('.color-bar').css('background', '#' + $('.color').val());
+                                                  $('.key-pair').first().find('.color-bar').css('background', '#' + $('.jscolor').val());
                                         }
                                         if (uploadCount == 3) {
                                                   $('.area .second b').text(area);
-                                                  $('.key-pair:nth-of-type(2)').find('.color-bar').first().css('background', '#' + $('.color').val());
+                                                  $('.key-pair:nth-of-type(2)').find('.color-bar').first().css('background', '#' + $('.jscolor').val());
                                         }
 
                                         ctx.beginPath();
+                                        ctx.globalAlpha = 0.5;
+
 
                                         x1 = (1250 / (XFinal - XOrigin)) * (listOfX[0] - XOrigin);
                                         y1 = (1250 / (YFinal - YOrigin)) * (listOfY[0] - YOrigin);
@@ -178,14 +180,15 @@ $('.hidden-browse').change(function () {
                                                   x = (1250 / (XFinal - XOrigin)) * (listOfX[i] - XOrigin);
                                                   y = (1250 / (YFinal - YOrigin)) * (listOfY[i] - YOrigin);
                                                   ctx.lineTo(x, y);
+                                                  ctx.strokeStyle = '#' + $('.up.jscolor').val();
+                                                  ctx.fillStyle = '#' + $('.up.jscolor').val();
+                                                  ctx.lineWidth = 2;
 
-                                                  ctx.strokeStyle = '#' + $('.up.color').val();
                                                   ctx.stroke();
 
-                                                  var fillcolor = document.getElementsByClassName('jscolor')[0].toRGBString();
-
-                                                  ctx.fillStyle = fillcolor;
                                         }
+                                        ctx.fill();
+
                                         clsPth.trigger('click');
                               }
                     },

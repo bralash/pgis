@@ -8,7 +8,7 @@
       // echo $_FILES['plot-image']['tmp_name'];
       if(is_int($conflict_id)){
           echo $conflict_id;
-          echo "<aside><h1>Conflict ".$_POST['conf_name']."added successfully</h1><a href='../plot.php?conflict_id={$conflict_id}&conflict_name={$_POST['conf_name']}'>Proceed to Technical Unit</a></aside>";
+          echo "<aside><h1>Conflict ".$_POST['conf_name']." added successfully</h1><a href='../plot.php?conflict_id={$conflict_id}&conflict_name={$_POST['conf_name']}'>Proceed to Technical Unit</a></aside>";
           echo "<style>a{color: inherit;}
               aside{width: 400px;background: rgb(240, 240, 240) none repeat scroll 0% 0%;padding: 15px;font-family: century gothic;color: rgb(116, 116, 116);}
           </style>";

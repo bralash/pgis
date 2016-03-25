@@ -31,27 +31,21 @@
 			<form class="ui form">
 				<input type="hidden" value="<?= $_GET['conflict_id']?>" name="conf_id">
 				<div class="col-md-4">
-					<h2 class="ui header dividing">Grid Controls</h2>
-					<div class="fields">
-						<div class="seven wide field">
-							<input type="number" id="strtX" placeholder="Starting X Coordinate">
-						</div>
-						<div class="seven wide field">
-							<input type="number" id="endX" placeholder="Ending X Coordinate">
-						</div>
+					<h2 class="ui header dividing">Map Info</h2>
+					<div class="key">
+					<div class="key-pair">
+						<span class="color-bar"></span><span>- Plaintiff</span>
 					</div>
-					<div class="fields">
-						<div class="seven wide field">
-							<input type="number" id="strtY" placeholder="Starting Y Coordinate">
-						</div>
-						<div class="seven wide field">
-							<input type="number" id="endY" placeholder="Ending Y Coordinate">
-						</div>
-						<div class="two wide field">
-							<button class="ui circular blue icon button" id="shG" title="Show Grid">
-								<i class="grid layout icon"></i>
-							</button>
-						</div>
+					<div class="key-pair">
+						<span class="color-bar"></span><span>- Defendant</span>
+					</div>
+					</div>
+					<div class="area">
+						<span class="first">Area of Plot1: <b></b></span>
+						<span class="second">Area of Plot2: <b></b></span>
+					</div>
+					<div class="scale">
+						<span style="color: rgb(34, 167, 240)">Scale - 1:1250</span>
 					</div>
 				</div>
 
@@ -87,18 +81,6 @@
 			</form>
 		</div>
 	
-		<div class="key">
-			<div class="key-pair">
-				<span class="color-bar"></span><span>- Plaintiff</span>
-			</div>
-			<div class="key-pair">
-				<span class="color-bar"></span><span>- Defendant</span>
-			</div>
-		</div>
-		<div class="area">
-			<span class="first">Area of Plot1: <b></b></span>
-			<span class="second">Area of Plot2: <b></b></span>
-		</div>
 		<div class="canvas-wrapper">
 			<span class="exv xorigin">XO</span>
 			<span class="exv xfinal">XF</span>

@@ -375,11 +375,27 @@
 				</div>
 			</div>
 			
+			<h2 class="ui dividing header">Images on Ground</h2>
+			<div class="fields">
+				<div class="five wide field">
+					<img src="img/fs1.jpg" alt="">
+				</div>
+				<div class="five wide field">
+					<img src="img/fs2.jpg" alt="">
+				</div>
+				<div class="five wide field">
+					<img src="img/fs3.jpg" alt="">
+				</div>
+			</div>
+
 			<h2 class="ui dividing header">Technical Unit(Conflict Visualization)</h2>
+			
+
+
 			<div class="field">
 				<div class="ui fuild image">
 					
-					<img src="img/test.png" />
+					<img src="img/ba.jpg" />
 				</div>
 			</div>
 

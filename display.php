@@ -380,7 +380,7 @@
 			<div class="field">
 				<div class="ui fuild image">
 					<?php $img = Conflict::getConflictImage($_GET['conflict_id']); ?>
-					<img src="img/<?=$img?>" />
+					<img style="background-color: white;" src="<?=$img?>" />
 				</div>
 			</div>
 

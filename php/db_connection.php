@@ -61,7 +61,7 @@ if(!class_exists('Database')){
 		} 
 
 		public function fetchArray($result_set){
-			return mysqli_fetch_array($result_set, MYSQL_ASSOC);
+			return mysqli_fetch_array($result_set, MYSQLI_ASSOC);
 		}
 		
 		public function numRows($result_set){

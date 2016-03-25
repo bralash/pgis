@@ -69,6 +69,16 @@
             return $db->lastInsertedId(); 
         }
 
+        public static function getConflictImage($id){
+            global $db;
+            $sql = "SELECT * FROM `graph_images` WHERE `conflict_id` = {$id}";
+            $query = $db->query($sql);
+            while($conflict = $db->fetchArray($query)){
+                return $conflict['image'];   
+            }
+
+        }
+
         public static function getConflictWithId($id){
             global $db;
             $query = $db->query("SELECT * FROM `conflicts` WHERE id = {$id}");

@@ -30,7 +30,7 @@
 			</form>
 		</div>
 	</section>
-	<footer>Copyright &copy; Nana Gyamera 2015</footer>
+	<footer>Copyright &copy; Nana Gyamera 2016</footer>
 
 	<script src="js/jquery.js"></script>
 	<script src="materialize/js/materialize.min.js"></script>
