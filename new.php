@@ -47,7 +47,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<input name="age_pln" type="number" />
+					<input name="age_pln" type="text" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
@@ -61,7 +61,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<input name="age_def" type="number" />
+					<input name="age_def" type="text" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
@@ -77,7 +77,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Plaintiff)</label>
-					<input name="age_pln_sec" type="number" />
+					<input name="age_pln_sec" type="text" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Plaintiff)</label>
@@ -91,7 +91,7 @@
 				</div>
 				<div class="three wide field">
 					<label>Age (Defendant)</label>
-					<input name="age_def_sec" type="number" />
+					<input name="age_def_sec" type="text" />
 				</div>
 				<div class="six wide field">
 					<label>Level of Education (Defendant)</label>
@@ -232,10 +232,11 @@
 					<select name="land_type_pln" class="ui dropdown">
 						<option value="0">State Acquired</option>
 						<option value="1">Vested</option>
-						<option value="2">Stool/Skin</option>
-						<option value="3">Family/Clan</option>
-						<option value="4">Private</option>
-						<option value="5">Common Property</option>
+						<option value="2">Stool</option>
+						<option value="3">Skin</option>
+						<option value="4">Family/Clan</option>
+						<option value="5">Private</option>
+						<option value="6">Common Property</option>
 					</select>
 				</div>
 				<div class="five wide field">
@@ -243,10 +244,11 @@
 					<select name="land_type_def" class="ui dropdown">
 						<option value="0">State Acquired</option>
 						<option value="1">Vested</option>
-						<option value="2">Stool/Skin</option>
-						<option value="3">Family/Clan</option>
-						<option value="4">Private</option>
-						<option value="5">Common Property</option>
+						<option value="2">Stool</option>
+						<option value="3">Skin</option>
+						<option value="4">Family/Clan</option>
+						<option value="5">Private</option>
+						<option value="6">Common Property</option>
 					</select>
 				</div>
 				<div class="five wide field">
@@ -267,6 +269,8 @@
 						<option value="1">Power of Attorney</option>
 						<option value="2">Police Extract</option>
 						<option value="3">Declaration</option>
+						<option value="4">Historic</option>
+						<option value="5">None</option>
 					</select>
 				</div>
 				<div class="eight wide field">
@@ -275,6 +279,8 @@
 						<option value="0">Cadastral</option>
 						<option value="1">Compass</option>
 						<option value="2">Layout</option>
+						<option value="3">Historic</option>
+						<option value="4">None</option>
 					</select>
 				</div>
 			</div>
@@ -286,6 +292,8 @@
 						<option value="1">Power of Attorney</option>
 						<option value="2">Police Extract</option>
 						<option value="3">Declaration</option>
+						<option value="4">Historic</option>
+						<option value="5">None</option>
 					</select>
 				</div>
 				<div class="eight wide field">
@@ -294,6 +302,8 @@
 						<option value="0">Cadastral</option>
 						<option value="1">Compass</option>
 						<option value="2">Layout</option>
+						<option value="3">Historic</option>
+						<option value="4s">None</option>
 					</select>
 				</div>
 			</div>

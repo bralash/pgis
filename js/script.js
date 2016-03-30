@@ -84,4 +84,18 @@ shG.on('click', function (e) {
     $('.yfinal').text(YFinal);
 });
 
+$('button.del').on('click', function() {
+    $(this).parent().find('.confirm-del').css({
+        'bottom' : '0px'
+    });
+    
+});
+$('a.no').on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().css({
+        'bottom' : '-60px'
+    });
+});
+
+
 // drawGrid(125, 120, 140, 130);
