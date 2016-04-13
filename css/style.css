@@ -132,6 +132,7 @@ canvas#land-area {
     background: #fff;
     display: block;
     margin: 20px auto;
+    transform: rotate(-90deg);
     border-radius: 3px;
 }
 
@@ -163,22 +164,22 @@ input::-webkit-inner-spin-button {
 
 .xorigin {
     left: 0;
-    top: 30px;
+    bottom: -30px;
 }
 
 .xfinal {
     right: 0;
-    top: 30px;
+    bottom: -30px;
 }
 
-.yorgin {
-    left: -25px;
-    top: 65px;
+.yorigin {
+    left: 0;
+    bottom: -65px;
 }
 
 .yfinal {
     left: 0;
-    bottom: 0;
+    top: 30px;
 }
 
 .button.ed {

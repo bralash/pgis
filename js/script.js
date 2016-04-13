@@ -85,11 +85,18 @@ shG.on('click', function (e) {
 });
 
 $('button.del').on('click', function() {
+    $('form.delete-form').find('input[name=conflict_id]').val($(this).parents('.conflict-main').data('id'));
     $(this).parent().find('.confirm-del').css({
         'bottom' : '0px'
     });
-    
+    $('.delete-yes').click(function(e){
+        e.preventDefault();
+//        console.log('submit')
+        $('form.delete-form').submit();
+    });
 });
+
+
 $('a.no').on('click', function(e) {
     e.preventDefault();
     $(this).parent().css({

@@ -28,10 +28,10 @@ $(document).ready(function () {
     }
 	});
 
-	$("input[type=text]").keydown(function (e) {
-		if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105))
-	    	e.preventDefault();
-	});
+//	$("input[type=text]").keydown(function (e) {
+//		if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105))
+//	    	e.preventDefault();
+//	});
 
 	$('.brw').on('click', function (e) {
         e.preventDefault();

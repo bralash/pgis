@@ -53,7 +53,7 @@
 
                     <div class="row">
                         <?php foreach ($conflicts as $key => $conflict):?>
-                            <div class="col s12 m4">
+                            <div class="col s12 m4 conflict-main" data-id="<?=$conflict["id"]?>">
                                 <div class="card white darken-1">
                                     <div class="card-content gray-text">
                                         <span class="card-title"><?=$conflict["conf_name"]?></span>
@@ -65,15 +65,15 @@
                                         <a href="display.php?conflict_id=<?=$conflict['id']?>">View Conflict</a>
 
 
-                                        <button class="ed circular ui icon button blue right" title="Edit">
+                                        <a class="ed circular ui icon button blue right" title="Edit" href="edit.php?conflict_id=<?=$conflict['id']?>">
                                             <i class="fa fa-pencil"></i>
-                                        </button>
+                                        </a>
                                         <button class="del circular ui icon button red right" title="Delete">
                                             <i class="fa fa-times"></i>
                                         </button>
                                         <div class="confirm-del">
                                         	<span>Delete Conflict?</span>
-                                        	<a href="" class="mini blue ui button">Yes</a>
+                                        	<a href="" class="mini blue ui button delete-yes">Yes</a>
                                         	<a href="" class="mini no red ui button">No</a>
                                         </div>
                                     </div>
@@ -83,6 +83,11 @@
                     </div>
             </div>
         </section>
+        <form action="php/conflict_controller.php" class="delete-form" method="post">
+            <input type="hidden" name="conflict_id"></input>
+            <input type="hidden" name="action" value="delete"></input>
+            <input type="submit" value="Delete"></input>
+        </form>
         <footer style="position: relative;">Copyright &copy; Nana Gyamera 2016</footer>
 
         <script src="js/jquery.js"></script>
