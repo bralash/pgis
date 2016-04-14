@@ -86,7 +86,6 @@
         <form action="php/conflict_controller.php" class="delete-form" method="post">
             <input type="hidden" name="conflict_id"></input>
             <input type="hidden" name="action" value="delete"></input>
-            <input type="submit" value="Delete"></input>
         </form>
         <footer style="position: relative;">Copyright &copy; Nana Gyamera 2016</footer>
 

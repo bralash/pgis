@@ -203,14 +203,14 @@
 				<div class="eight wide field">
 					<label>Economic Attraction</label>
 <!--					<select name="eco_attn" class="ui dropdown">-->
-						<input name="eco_attn" type="checkbox" value="0">Oil/Gas</input>
-						<input name="eco_attn" type="checkbox" value="1">Mining</input>
-						<input name="eco_attn" type="checkbox" value="2">Beach</input>
-						<input name="eco_attn" type="checkbox" value="3">Tourism</input>
-						<input name="eco_attn" type="checkbox" value="4">Estate</input>
-						<input name="eco_attn" type="checkbox" value="5">Educational</input>
-						<input name="eco_attn" type="checkbox" value="6">Industrial</input>
-						<input name="eco_attn" type="checkbox" value="7">Recreational</input>
+						<input name="eco_attn[]" type="checkbox" value="Oil/Gas">Oil/Gas</input>
+						<input name="eco_attn[]" type="checkbox" value="Mining">Mining</input>
+						<input name="eco_attn[]" type="checkbox" value="Beach">Beach</input>
+						<input name="eco_attn[]" type="checkbox" value="Tourism">Tourism</input>
+						<input name="eco_attn[]" type="checkbox" value="Estate">Estate</input>
+						<input name="eco_attn[]" type="checkbox" value="Educational">Educational</input>
+						<input name="eco_attn[]" type="checkbox" value="Industrial">Industrial</input>
+						<input name="eco_attn[]" type="checkbox" value="Recreational">Recreational</input>
 <!--					</select>-->
 				</div>
 			</div>

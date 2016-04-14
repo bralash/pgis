@@ -218,7 +218,7 @@
 				</div>
 				<div class="eight wide field">
 					<label>Economic Attraction</label>
-					<h4 class="ui header">Estate, Beach</h4>
+					<h4 class="ui header"><?=$conflict_details['eco_attn']?></h4>
 				</div>
 			</div>
 			

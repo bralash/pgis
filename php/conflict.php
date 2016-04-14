@@ -43,13 +43,23 @@
             $sql = substr($sql, 0, strlen($sql)-2).') VALUES (';
             
             foreach ($_POST as $key => $input) {
-                if($key == 'action' || $key == 'plot-image') $input = null;
-                else $sql .= "'{$input}',";
+                if($key == 'action' || $key == 'plot-image'){
+                    $input = null;
+                }elseif ($key == 'eco_attn') {
+                    $ecoValues = "'";
+
+                    for ($i=0; $i < count($_POST['eco_attn']); $i++) { 
+                        $ecoValues .= $_POST['eco_attn'][$i]. ' & ';
+                    }
+                    $sql .= substr($ecoValues, 0, strlen($ecoValues)-1)."',";
+                }
+                else $sql .= "'{$input}', ";
             }
 
-            $sql = substr($sql, 0, strlen($sql)-2)."');";
-            // return $sql;
-            // $db->query($db->sqlFormat($sql));
+            $sql = substr($sql, 0, strlen($sql)-2).")";
+//             echo $sql;
+//            return;
+//            $db->query($db->sqlFormat($sql));
             $db->query($sql);
 
             if(isset($files_array['plot-image'])){
@@ -92,7 +102,6 @@
             while($conflict = $db->fetchArray($query)){
                 return $conflict['image'];   
             }
-
         }
 
         public static function getConflictWithId($id){
